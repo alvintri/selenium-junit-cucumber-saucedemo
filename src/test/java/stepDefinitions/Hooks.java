@@ -10,7 +10,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -20,13 +22,20 @@ public class Hooks extends env {
 
     @Before
     public void before() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions opt = new ChromeOptions();
-        opt.setHeadless(true);
-        driver = new ChromeDriver(opt);
+        // Comment this when use edge instead chrome
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions opt = new ChromeOptions();
+//        driver = new ChromeDriver();
+
+        //Un comment this when use edge drive if there any version issue in chrome driver
+        WebDriverManager.edgedriver().setup();
+        EdgeOptions opt = new EdgeOptions();
+        driver = new EdgeDriver(opt);
+
         driver.manage().window().maximize();
         driver.get(url);
     }
+
 
     @After
     public void after(Scenario scenario) throws IOException {
@@ -36,6 +45,4 @@ public class Hooks extends env {
         }
         driver.quit();
     }
-
-
 }
