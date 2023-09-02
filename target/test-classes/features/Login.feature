@@ -16,7 +16,7 @@ Feature: Login functionality
       | username                | password      | status  |
       | standard_user           | secret_sauce  | success |
       | performance_glitch_user | secret_sauce  | success |
-      | failed_user             | secret_sauce  | success |
+      | failed_user             | secret_sauce  | false   |
 
   @Negative
   Scenario Outline: Ensure user failed login with wrong username and password
